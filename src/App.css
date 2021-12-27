@@ -1,5 +1,5 @@
 
-.movie-list{
+ .movie-list{
   display:flex;
   flex-direction:row;
   justify-content: space-evenly;
@@ -22,4 +22,33 @@
   height: 50px;
   margin-top:13px;
   background:#ffc20e;
+}
+ul{
+  list-style: none;
+  margin-bottom: 40px;
+  text-decoration:none;
+  }
+  .second-ul{
+    list-style: none;
+    margin-bottom: 40px;
+    text-decoration:none;
+    font-size: 12px;
+
+  }
+  .second-li {
+    padding: 12px;
+    color:white;
+  }
+li
+{ 
+  padding: 12px;
+  color:#b3b2b6;
+display:inline; 
+
+}
+a {text-decoration: none; }
+sup {
+  vertical-align: super;
+  font-size: 10px;
+  color:red;
 }
