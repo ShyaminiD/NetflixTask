@@ -1,22 +1,29 @@
 
  .movie-list{
-  display:flex;
-  flex-direction:row;
-  justify-content: space-evenly;
+  display:grid;
+  grid-template-columns: auto auto auto auto auto;
+  padding:30px;
+  grid-column-gap:10px;
+  
 }
 .movie-container {
-  height: 420px;
-  width: 250px;
-  background-color: whitesmoke;
-  text-align: center;
+  height: 440px;
+  width: 200px;
+  /* background-color: whitesmoke; */
+  display:flex;
+  flex-direction:column;
+  border-radius: 10px;
+  overflow: hidden;
 
   
 }
 .movie-poster{
   height:300px;
-  width: 250px;
+  width: 200px;
   object-fit: cover;
+  display:block;
 }
+
 .book-button{
   width: 250px;
   height: 50px;
@@ -52,3 +59,11 @@ sup {
   font-size: 10px;
   color:red;
 }
+
+/* SignIn styling */
+.signIn-container{
+  background-color: white;
+  text-align: center;
+  width:35%;
+}
+/* End of SignIn styling */

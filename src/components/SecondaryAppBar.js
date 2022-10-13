@@ -4,7 +4,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import { Switch, Route, Link } from "react-router-dom";
 
-function SecondaryAppBar() {
+function SecondaryAppBar({ SignUp }) {
+  console.log(SignUp);
   const pages = [
     "Movies",
     "Stream",
@@ -15,7 +16,7 @@ function SecondaryAppBar() {
     "Buzz",
   ];
   return (
-    <Box sx={{ flexGrow: 1, height: 40 }}>
+    <Box sx={{ flexGrow: 1, height: 40, display: { xs: "none", md: "block" } }}>
       <AppBar
         position="static"
         style={{
@@ -49,7 +50,7 @@ function SecondaryAppBar() {
               <li>Buzz</li>
             </Link>
           </ul>
-          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ flexGrow: 1, display: { xs: "none", lg: "block" } }} />
           <ul className="second-ul">
             <Link to="/listyourshow">
               <li className="second-li">
@@ -66,12 +67,16 @@ function SecondaryAppBar() {
               <li className="second-li">Gift Cards</li>
             </Link>
           </ul>
-
-          <Switch>
-            <Route path="/movies">{/* <Movielist /> */}</Route>
-          </Switch>
         </Toolbar>
       </AppBar>
+      <Switch>
+        <Route path="/movies">
+          <Movielist />
+        </Route>
+        <Route path="/signin">
+          <SignUp />
+        </Route>
+      </Switch>
     </Box>
   );
 }
@@ -82,10 +87,10 @@ function Movielist() {
       id: "101",
       poster:
         "https://i1.wp.com/www.socialnews.xyz/wp-content/uploads/2020/04/08/Stylish-Star-Allu-Arjun-First-Look-Posters-as-Pushpa-Raj-From-Pushpa-Movie-in-5-languages-.jpg?quality=80&zoom=1&ssl=1",
-      name: "Pushpa",
-      language: "Telugu",
+      name: "Pushpa: The Rise Part 01",
+      language: "Telugu, Tamil, Malayalam",
       certificate: "U/A",
-      type: "Action Drama Thriller",
+      type: "Action/Drama/Thriller",
       dateofrelease: "12/17/2021",
       duration: "2hrs 59min",
       actors: "Allu Arjun Rashmika Mandanna",
@@ -102,7 +107,7 @@ function Movielist() {
       name: "Akanda",
       language: "Telugu",
       certificate: "U/A",
-      type: "Action Drama",
+      type: "Action/Drama",
       dateofrelease: "12/2/2021",
       duration: "-",
       actors: "Anjali Nandamuri Balakrishna Pragya Jaiswala",
@@ -114,10 +119,17 @@ function Movielist() {
   ];
 
   return (
-    <div className="movie-list">
-      {newMovies.map((movie) => (
-        <MovieDisplay newmovie={movie} />
-      ))}
+    <div>
+      <div>
+        <p style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
+          Recommended Movies
+        </p>
+      </div>
+      <div className="movie-list">
+        {newMovies.map((movie) => (
+          <MovieDisplay newmovie={movie} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -127,11 +139,30 @@ function MovieDisplay({ newmovie }) {
   console.log(newmovie.name);
   return (
     <div className="movie-container">
-      <img className="movie-poster" src={newmovie.poster} alt="movie-poster" />
-      <p>{newmovie.name}</p>
-      <p>{newmovie.language}</p>
+      <div>
+        <img
+          className="movie-poster"
+          src={newmovie.poster}
+          alt="movie-poster"
+        />
+      </div>
+      <div
+        style={{
+          backgroundColor: "black",
+          color: "white",
+          padding: "5px",
+          borderRadius: "0px 0px 10px 10px",
+        }}
+      >
+        ❤️ 85% 337k votes
+      </div>
 
-      <button className="book-button">Book</button>
+      <div style={{ lineHeight: "100%" }}>
+        <p style={{ fontWeight: "bold" }}>{newmovie.name}</p>
+        <p style={{ color: "#a3a3a3" }}>{newmovie.type}</p>
+      </div>
+
+      {/* <button className="book-button">Book</button> */}
     </div>
   );
 }

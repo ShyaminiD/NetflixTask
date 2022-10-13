@@ -2,6 +2,7 @@ import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
+import { useState } from "react";
 
 import { makeStyles } from "@material-ui/core";
 import MenuItem from "@mui/material/MenuItem";
@@ -15,6 +16,7 @@ import MenuIcon from "@mui/material/Menu";
 import { styled, alpha } from "@mui/material/styles";
 
 import InputBase from "@mui/material/InputBase";
+import { Switch, Route, Link } from "react-router-dom";
 
 // import SearchIcon from "@mui/icons-material/Search";
 
@@ -70,14 +72,14 @@ function PrimarySearchAppBar() {
     "Kolkata",
     "Kochi",
   ];
-  const [city, setCity] = React.useState("");
+  const [city, setCity] = useState("");
   console.log(city);
   const handleChange = (event) => {
     setCity(event.target.value);
   };
 
   return (
-    <Box sx={{ flexGrow: 2 }}>
+    <Box sx={{ flexGrow: 1, overflow: "hidden" }}>
       <AppBar
         position="static"
         style={{ backgroundColor: "#2e3147", height: "70px" }}
@@ -90,8 +92,8 @@ function PrimarySearchAppBar() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", lg: "block" } }} />
+          <Box sx={{ display: { md: "flex" } }}>
             <FormControl sx={{ m: 1, minWidth: 90 }}>
               <Select
                 value={city}
@@ -110,12 +112,15 @@ function PrimarySearchAppBar() {
           </Box>
 
           <Box sx={{ "& button": { m: 1 } }}>
+          <Link to="/signin">
             <Button
+             
               size="small"
               style={{ backgroundColor: "#f84464", color: "white" }}
             >
-              Signup
-            </Button>
+              Sign in
+              </Button>
+              </Link>
           </Box>
           <IconButton
             size="large"
